@@ -6,7 +6,7 @@ class Header extends Component {
       <div className="text-center">
         <img
           src="https://blog.logrocket.com/wp-content/themes/logrocket/assets/logrocket-logo.png"
-          alt="description of image"
+          alt="description"
           width="300"
           className="img-thumbnail"
           style={{ marginTop: "20px" }}
