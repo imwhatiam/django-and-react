@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal, ModalHeader, Input, ModalBody, ModalFooter, Form, FormGroup, Label, Alert } from 'reactstrap';
-import { gettext } from '../../../utils/constants';
-import AlibabaUserSetSelect from './components/alibaba-user-set-select';
+import AlibabaUserSetSelect from './alibaba-user-set-select';
 
 
 const propTypes = {
@@ -45,11 +44,10 @@ class SysAdminAddUserSetDialog extends React.Component {
       errMessage: '',
       isSubmitBtnActive: false
     };
-    this.inputRef = React.createRef();
   }
 
   componentDidMount() {
-      this.inputRef.focus();
+      console.log('in componentDidMount');
   }
 
   toggle = () => {
@@ -124,22 +122,21 @@ class SysAdminAddUserSetDialog extends React.Component {
   render() {
     return (
       <Modal isOpen={true} toggle={this.toggle} style={{maxWidth: '600px', width: '100%' }}>
-        <ModalHeader toggle={this.toggle}>{gettext('New User Set')}</ModalHeader>
+        <ModalHeader toggle={this.toggle}>{'New User Set'}</ModalHeader>
         <ModalBody>
           <Form>
             <FormGroup>
               <Label className="mt-2">
-                {gettext('User Set ID')}
+                {'User Set ID'}
               </Label>
               <Input
                 id="userSetID"
                 onKeyPress={this.handleKeyPress}
                 value={this.state.userSetID}
                 onChange={this.handleUserSetIDChange}
-                innerRef={input => {this.inputRef= input;}}
               />
               <Label className="mt-2">
-                {gettext('Filters')}
+                {'Filters'}
               </Label>
               {this.state.userSetFilters.map((item, index) => (
                 <div key={index} style={{ marginBottom: '16px' }}>
@@ -163,8 +160,8 @@ class SysAdminAddUserSetDialog extends React.Component {
           {this.state.errMessage && <Alert color="danger">{this.state.errMessage}</Alert>}
         </ModalBody>
         <ModalFooter>
-          <Button color="secondary" onClick={this.toggle}>{gettext('Cancel')}</Button>
-          <Button color="primary" onClick={this.handleSubmit} disabled={!this.state.isSubmitBtnActive}>{gettext('Submit')}</Button>
+          <Button color="secondary" onClick={this.toggle}>{'Cancel'}</Button>
+          <Button color="primary" onClick={this.handleSubmit} disabled={!this.state.isSubmitBtnActive}>{'Submit'}</Button>
         </ModalFooter>
       </Modal>
     );

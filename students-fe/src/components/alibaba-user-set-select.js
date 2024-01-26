@@ -1,13 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import AsyncSelect from 'react-select/lib/Async';
-import { seafileAPI } from '../../../../utils/seafile-api.js';
-import { gettext } from '../../../../utils/constants';
-import { Utils } from '../../../../utils/utils.js';
-import toaster from '../../../../components/toast';
-
-import '../../../../css/user-select.css';
+import AsyncSelect from 'react-select/async';
 
 const propTypes = {
   uniqueID: PropTypes.string,
@@ -41,21 +35,10 @@ class AlibabaUserSetSelect extends React.Component {
     setTimeout(() => {
       if (this.finalValue === value) {
         if (value.length > 0) {
-          seafileAPI.searchUsers(value).then((res) => {
-            this.options = [];
-            this.options.push({'value': value, 'label': value});
-            for (let i = 0 ; i < res.data.users.length; i++) {
-              const item = res.data.users[i];
-              let obj = {};
-              obj.value = item.email;
-              obj.label = item.nick_name;
-              this.options.push(obj);
-            }
-            callback(this.options);
-          }).catch(error => {
-            let errMessage = Utils.getErrorMsg(error);
-            toaster.danger(errMessage);
-          });
+          let obj = {};
+          obj.value = value;
+          obj.label = value;
+          this.options.push(obj);
         }
       }
     }, 1000);
@@ -124,7 +107,7 @@ class AlibabaUserSetSelect extends React.Component {
     return (
       <div style={{ display: 'flex', marginBottom: '8px' }}>
         {
-          this.props.uniqueID == 'first one' ?
+          this.props.uniqueID === 'first one' ?
           <div style={{ width: '20px'}}></div>
           :
           <div style={{
@@ -137,7 +120,7 @@ class AlibabaUserSetSelect extends React.Component {
           </div>
         }
         {
-          this.props.uniqueID == 'first one' ?
+          this.props.uniqueID === 'first one' ?
           <div style={{ width: '85px'}}>
             <Select isDisabled />
           </div>

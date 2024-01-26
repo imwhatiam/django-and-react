@@ -3,7 +3,7 @@ import { Col, Container, Row, Button } from "reactstrap";
 import StudentList from "./StudentList";
 import NewStudentModal from "./NewStudentModal";
 
-import addUserSetDialog from "./add-user-set-dialog";
+import AddUserSetDialog from "./add-user-set-dialog";
 
 import axios from "axios";
 
@@ -59,7 +59,7 @@ class Home extends Component {
           </Col>
         </Row>
         {this.state.showAddUserSetDialog &&
-          <addUserSetDialog
+          <AddUserSetDialog
             toggleDialog={this.toggleAddUserSetDialog}
             addItem={this.addItem}
           />
