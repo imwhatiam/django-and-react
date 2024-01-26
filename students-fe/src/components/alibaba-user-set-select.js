@@ -17,7 +17,7 @@ class AlibabaUserSetSelect extends React.Component {
     this.finalValue = '';
     this.state = {
       field: this.props.field || '',
-      opeartion: this.props.opeartion || '',
+      operation: this.props.operation || '',
       value: this.props.value || '',
       searchValue: '',
     };
@@ -48,7 +48,7 @@ class AlibabaUserSetSelect extends React.Component {
     this.setState({ field: selectedOption ? selectedOption.value : '' }, () => {
       let filter = {
         "field": this.state.field,
-        "operation": this.state.opeartion,
+        "operation": this.state.operation,
         "value": this.state.value,
         "uniqueID": this.props.uniqueID,
       }
@@ -56,11 +56,11 @@ class AlibabaUserSetSelect extends React.Component {
     });
   };
 
-  handleOpeartionChange = (selectedOption) => {
-    this.setState({ opeartion: selectedOption ? selectedOption.value : '' }, () => {
+  handleOperationChange = (selectedOption) => {
+    this.setState({ operation: selectedOption ? selectedOption.value : '' }, () => {
       let filter = {
         "field": this.state.field,
-        "operation": this.state.opeartion,
+        "operation": this.state.operation,
         "value": this.state.value,
         "uniqueID": this.props.uniqueID,
       }
@@ -72,7 +72,7 @@ class AlibabaUserSetSelect extends React.Component {
     this.setState({ value: selectedOption ? selectedOption.value : '' }, () => {
       let filter = {
         "field": this.state.field,
-        "operation": this.state.opeartion,
+        "operation": this.state.operation,
         "value": this.state.value,
         "uniqueID": this.props.uniqueID,
       }
@@ -81,8 +81,8 @@ class AlibabaUserSetSelect extends React.Component {
   };
 
   render() {
+
     const searchValue = this.state.searchValue;
-    const style = { margin: '6px 10px', textAlign: 'center', color: 'hsl(0,0%,50%)' };
 
     const logic = [
       { value: 'and', label: 'and' },
@@ -96,7 +96,7 @@ class AlibabaUserSetSelect extends React.Component {
       { value: 'dept_name', label: 'dept_name' },
       { value: 'dept_name_en', label: 'dept_name_en' },
     ];
-    const opeartions = [
+    const operations = [
       { value: 'equal', label: 'equal' },
       { value: 'not-equal', label: 'not-equal' },
       { value: 'contains', label: 'contains' },
@@ -141,9 +141,9 @@ class AlibabaUserSetSelect extends React.Component {
         </div>
         <div style={{ flex: 1 }}>
           <Select
-            options={opeartions}
-            onChange={this.handleOpeartionChange}
-            value={opeartions.find(opeartion => opeartion.value === this.props.opeartion)}
+            options={operations}
+            onChange={this.handleOperationChange}
+            value={operations.find(operation => operation.value === this.props.operation)}
           />
         </div>
         <div style={{ flex: 1 }}>

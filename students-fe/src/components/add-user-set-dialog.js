@@ -23,7 +23,7 @@ let fields = [
   { value: 'dept_name_en', label: 'dept_name_en' },
 ];
 
-let opeartions = [
+let operations = [
   { value: 'equal', label: 'equal' },
   { value: 'not-equal', label: 'not-equal' },
   { value: 'contains', label: 'contains' },
@@ -38,16 +38,12 @@ class SysAdminAddUserSetDialog extends React.Component {
     this.state = {
       userSetID: '',
       userSetFilters: [{'field': 'uid',
-                        'opeartion': 'equal',
+                        'operation': 'equal',
                         'value': '',
                         'uniqueID': 'first one'}],
       errMessage: '',
       isSubmitBtnActive: false
     };
-  }
-
-  componentDidMount() {
-      console.log('in componentDidMount');
   }
 
   toggle = () => {
@@ -72,12 +68,12 @@ class SysAdminAddUserSetDialog extends React.Component {
     let result = fields.filter(field => !filterFields.includes(field.value));
     if (result.length === 0) {
       filters.push({'field': 'uid',
-                    'opeartion': '',
+                    'operation': '',
                     'value': '',
                     'uniqueID': Math.random().toString(36)});
     } else {
       filters.push({'field': result[0].value,
-                    'opeartion': '',
+                    'operation': '',
                     'value': '',
                     'uniqueID': Math.random().toString(36)});
     }
@@ -143,7 +139,7 @@ class SysAdminAddUserSetDialog extends React.Component {
                   <AlibabaUserSetSelect
                     uniqueID={item.uniqueID}
                     field={item.field}
-                    opeartion={item.opeartion}
+                    operation={item.operation}
                     value={item.value}
                     onSelectedValueChange={this.updateUserSetFilter}
                     onCloseClick={() => this.deleteUserSetFilter(item.uniqueID)}
